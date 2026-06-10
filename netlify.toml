@@ -6,7 +6,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 
 # The site fetches the live tokens.css from the assets bucket at build time.
 # No env var is required for that (it defaults to the bucket URL), but if you
