@@ -1,0 +1,12 @@
+/* ------------------------------------------------------------------
+   Live brand tokens.
+   This pulls the generated token CSS straight from the assets bucket,
+   so this site always reflects the current published brand values —
+   the same file every other Cocolo app consumes. Single source of truth.
+   ------------------------------------------------------------------ */
+@import url("https://assets.cocolotravel.com/brand/tokens.css");
+
+/* Brand fonts. These are the placeholder families from the starter; swap
+   the @import for your licensed/self-hosted fonts once finalized (and prefer
+   hosting them on the assets bucket rather than Google Fonts for production). */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap");

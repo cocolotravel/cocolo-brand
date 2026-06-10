@@ -1,0 +1,48 @@
+/* ------------------------------------------------------------------
+   Maps the brand tokens onto Starlight's own theme variables, so the
+   documentation site itself looks like the brand it documents.
+   Starlight exposes a documented set of --sl-color-* variables; we point
+   them at our --color-cloud-* / --color-accent-* tokens.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Brand typography into Starlight */
+  --sl-font: var(--typography-family-body, system-ui, sans-serif);
+  --sl-font-system: var(--typography-family-body, system-ui, sans-serif);
+
+  /* Accent = brand sky */
+  --sl-color-accent-low: var(--color-cloud-mist, #dce5ee);
+  --sl-color-accent: var(--color-cloud-sky, #5b8db8);
+  --sl-color-accent-high: var(--color-cloud-storm, #2c3e50);
+
+  /* Text + surfaces (dark theme is Starlight's default) */
+  --sl-color-white: #ffffff;
+  --sl-color-text-accent: var(--color-cloud-haze, #a8bed2);
+}
+
+/* Light theme overrides — map onto the soft cloud palette */
+:root[data-theme="light"] {
+  --sl-color-accent-low: var(--color-cloud-mist, #dce5ee);
+  --sl-color-accent: var(--color-cloud-sky, #5b8db8);
+  --sl-color-accent-high: var(--color-cloud-ink, #16222e);
+
+  --sl-color-white: var(--color-cloud-ink, #16222e);     /* "white" = darkest text in light mode */
+  --sl-color-gray-7: var(--color-cloud-white, #f7f9fb);  /* page background */
+  --sl-color-gray-6: var(--color-cloud-white, #f7f9fb);
+  --sl-color-black: var(--color-cloud-white, #f7f9fb);
+  --sl-color-text: var(--color-cloud-storm, #2c3e50);
+}
+
+/* Display face for headings and the site title */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.site-title {
+  font-family: var(--typography-family-display, Georgia, serif);
+  letter-spacing: -0.01em;
+}
+
+/* A soft cloud-tinted hero on the splash/home template */
+.hero {
+  --overlay-blurple: transparent;
+}

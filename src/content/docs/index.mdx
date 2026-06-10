@@ -1,0 +1,44 @@
+---
+title: Cocolo Brand
+description: The identity, voice, and visual rules for Cocolo Travel.
+template: splash
+hero:
+  tagline: Travel as a state of beautiful uncertainty. The guidelines behind how Cocolo looks, sounds, and feels.
+  actions:
+    - text: The idea
+      link: /guidelines/concept/
+      icon: right-arrow
+      variant: primary
+    - text: Colors
+      link: /guidelines/colors/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## A single source of truth
+
+Everything visual in these pages is rendered live from the published brand
+tokens — the same `tokens.css` every Cocolo app consumes. When a value changes
+at the source, this documentation changes with it. Nothing here is a hand-drawn
+copy that can drift out of date.
+
+<CardGrid>
+  <Card title="Foundations" icon="setting">
+    The raw materials — [colors](/guidelines/colors/),
+    [typography](/guidelines/typography/), and [spacing](/guidelines/spacing/) —
+    pulled live from the token source.
+  </Card>
+  <Card title="Identity" icon="star">
+    The [idea behind the brand](/guidelines/concept/), [logo use](/guidelines/logo/),
+    [voice & tone](/guidelines/voice/), and [imagery](/guidelines/imagery/).
+  </Card>
+  <Card title="For developers" icon="seti:config">
+    How to [consume the tokens](/guidelines/tokens/) in any app with a single
+    stylesheet link.
+  </Card>
+  <Card title="Still evolving" icon="pencil">
+    The brand is mid-rebrand. These pages are the working reference, not a frozen
+    rulebook — expect them to grow.
+  </Card>
+</CardGrid>

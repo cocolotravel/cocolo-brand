@@ -1,0 +1,15 @@
+# Netlify build configuration for the Cocolo brand guidelines site.
+# Netlify auto-detects Astro, but pinning it here removes any ambiguity.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# The site fetches the live tokens.css from the assets bucket at build time.
+# No env var is required for that (it defaults to the bucket URL), but if you
+# ever want to build against a different token source, set TOKENS_URL here.
+# [build.environment]
+#   TOKENS_URL = "https://assets.cocolotravel.com/brand/tokens.css"
