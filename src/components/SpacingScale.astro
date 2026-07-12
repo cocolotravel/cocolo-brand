@@ -2,21 +2,24 @@
 import { spacing } from "./tokens.js";
 ---
 
+<p class="note">
+  Illustrative multiples of the 8px unit — no dedicated spacing tokens are
+  published yet, so these steps aren't read live from the token file.
+</p>
 <div class="scale">
   {spacing.map((s) => (
     <div class="row">
       <code class="label">{s.label}</code>
-      <code class="val">{s.value}</code>
-      <div class="track"><div class="bar" style={`width: var(${s.cssVar})`}></div></div>
+      <div class="track"><div class="bar" style={`width: ${s.value}`}></div></div>
     </div>
   ))}
 </div>
 
 <style>
+  .note { font-size: 0.8rem; color: var(--sl-color-text-accent); margin-bottom: 0.75rem; }
   .scale { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
   .row { display: flex; align-items: center; gap: 1rem; }
-  .label { min-width: 42px; font-weight: 700; }
-  .val { min-width: 72px; font-size: 0.72rem; color: var(--sl-color-text-accent); }
+  .label { min-width: 56px; font-weight: 700; }
   .track { flex: 1; background: var(--sl-color-gray-6); border-radius: 4px; }
-  .bar { height: 20px; background: var(--color-cloud-sky, #5b8db8); border-radius: 4px; }
+  .bar { height: 20px; max-width: 100%; background: var(--color-brand-sumi, #1b3848); border-radius: 4px; }
 </style>

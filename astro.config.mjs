@@ -10,9 +10,9 @@ export default defineConfig({
   site: "https://cocolo-brand.netlify.app",
   integrations: [
     starlight({
-      title: "Cocolo Brand",
+      title: "COCOLO Brand",
       description:
-        "The brand identity, voice, and visual rules for Cocolo Travel.",
+        "The brand identity, voice, and visual rules for COCOLO Travel.",
       // Brand CSS is layered on top of Starlight's defaults. The first file
       // pulls in the live tokens from the assets bucket; the second maps those
       // tokens onto Starlight's own theme variables and styles components.

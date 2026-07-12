@@ -42,27 +42,50 @@ function parseVars(css) {
 const all = parseVars(await getCss());
 
 // Categorize by prefix so each page can render the right group.
+// Two tiers: semantic tokens (background/text/border — what code should use)
+// and brand primitives (the palette itself, group "brand").
+const GROUP_ORDER = ["background", "text", "border", "brand"];
+const GROUP_LABELS = {
+  background: "Background",
+  text: "Text",
+  border: "Border",
+  brand: "Brand primitives",
+};
+
 export const colors = all
   .filter((t) => t.name.startsWith("color-"))
   .map((t) => ({
     ...t,
-    // color-cloud-sky -> group "cloud", label "sky"
+    // color-background-primary -> group "background", label "primary"
     group: t.name.split("-")[1] ?? "",
     label: t.name.split("-").slice(2).join(" ") || t.name,
     cssVar: `--${t.name}`,
-  }));
+  }))
+  .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group));
+
+export function groupLabel(group) {
+  return GROUP_LABELS[group] ?? group;
+}
 
 export const typographySizes = all
-  .filter((t) => t.name.startsWith("typography-size-"))
-  .map((t) => ({ ...t, label: t.name.replace("typography-size-", ""), cssVar: `--${t.name}` }));
+  .filter((t) => t.name.startsWith("font-size-"))
+  .map((t) => ({ ...t, label: t.name.replace("font-size-", ""), cssVar: `--${t.name}` }));
 
 export const typographyFamilies = all
-  .filter((t) => t.name.startsWith("typography-family-"))
-  .map((t) => ({ ...t, label: t.name.replace("typography-family-", ""), cssVar: `--${t.name}` }));
+  .filter((t) => t.name.startsWith("font-style-"))
+  .map((t) => ({ ...t, label: t.name.replace("font-style-", ""), cssVar: `--${t.name}` }));
 
-export const spacing = all
-  .filter((t) => t.name.startsWith("spacing-"))
-  .map((t) => ({ ...t, label: t.name.replace("spacing-", ""), cssVar: `--${t.name}` }));
+export const typographyWeights = all
+  .filter((t) => t.name.startsWith("font-weights-"))
+  .map((t) => ({ ...t, label: t.name.replace("font-weights-", ""), cssVar: `--${t.name}` }));
+
+// No dedicated spacing tokens are published yet — the brand rule is an 8px
+// scale (see references/tokens.md), not named steps. This is an illustrative
+// scale, not read from the live token file.
+export const spacing = [8, 16, 24, 32, 40, 48, 64, 96, 128].map((px) => ({
+  label: `${px}px`,
+  value: `${px}px`,
+}));
 
 // WCAG contrast helpers (hex only)
 function hexToRgb(hex) {

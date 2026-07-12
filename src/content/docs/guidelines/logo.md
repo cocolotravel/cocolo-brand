@@ -1,41 +1,77 @@
 ---
 title: Logo
-description: How to use the Cocolo logo — clear space, sizing, and misuse.
+description: The cloud symbol — its meaning, construction, clear space, and misuse.
 ---
 
-:::note[Placeholder]
-The logo is being finalized as part of the rebrand. This page describes the rules
-that will apply; the artwork and downloadable files will be added once approved
-and uploaded to the assets bucket.
-:::
+## The cloud
 
-## Clear space
+The COCOLO logo is a cloud. More than a symbol, it carries the soul of the
+brand.
 
-Give the logo room to breathe — it's a cloud, after all. Maintain clear space on
-all sides equal to the height of the logo's primary element, and never crowd it
-with text or other marks.
+The cloud represents movement, change and freedom. It awakens the inner
+child in all of us, calling for adventure and inviting our imagination to
+roam free. Unbound by gravity, it drifts between worlds, between cultures,
+between moments.
 
-## Minimum size
+Visually it carries a subtle Japanese inspiration — its flowing curves and
+elegant loops a quiet nod to the aesthetics of the East — yet it transcends
+the cliché of the typical Japanese travel agency. It looks toward the
+future, reflecting COCOLO's ambition to grow beyond Japan.
 
-Set a minimum size below which the logo is not used, to keep it legible. This will
-be specified once the final artwork exists (typically expressed in pixels for
-screen and millimeters for print).
+The cloud is the vessel for the [four pillars](/guidelines/concept/):
+
+- **Kodawari** — the relentless pursuit of detail and craft, visible in
+  every curve of the symbol
+- **Sensorial** — the cloud evokes sensation, texture, and the intangible
+  beauty of travel
+- **Stillness** — floating effortlessly, the cloud embodies calm, pause and
+  mindful presence
+- **Wabi-Sabi** — imperfect, organic and natural, it finds beauty in the
+  ephemeral and the incomplete
+
+## Logo construction
+
+The logo exists in three forms — **primary lockup**, **symbol only**, and
+**symbol in a circle** — each in linear and solid variants.
+
+**Symbol only**
+The cloud symbol is the dominant element of the identity and must always be
+treated with care and consistency.
+- **X** — the width of the cloud symbol
+- **A** — the diameter of the exclusion circle, equal to **1.5X**, centered
+  on the symbol
+
+**Symbol in a circle**
+When used standalone, the cloud is contained within a circle that defines
+its boundary. The exclusion zone is a second concentric circle whose
+diameter **A** equals the inner circle diameter **X** plus **1/8 on each
+side**.
+
+**Primary lockup**
+The cloud symbol and the "COCOLO" logotype form a unified horizontal lockup.
+- **X** — the height of the cloud symbol, the dominant element
+- **Y** — the height of the logotype, set at **1/3 of X** — the symbol
+  commands presence, the wordmark stays refined and understated
+- **A** — the total width of the complete logo unit
+- **Z¹** (height) and **Z²** (width) — the exclusion zone, **15 units on all
+  sides**
+
+No text, graphic or visual element may enter the protected space, in any
+form. The clear space preserves the logo's elegance and authority in every
+application.
 
 ## Misuse
-
-Once the logo is final, this section will show what not to do — but the principles
-are constant:
 
 - Don't stretch, squash, or rotate it.
 - Don't recolor it outside the approved palette.
 - Don't add effects (shadows, glows, outlines).
 - Don't place it on a busy background that compromises legibility.
+- Don't crowd the exclusion zone with text or other marks.
 - Don't recreate or approximate it — always use the supplied files.
 
 ## Files
 
-When ready, logo files will live on the assets bucket alongside the other brand
-assets:
+Logo files live on the assets bucket alongside the other brand assets:
 
 ```
 https://assets.cocolotravel.com/logos/

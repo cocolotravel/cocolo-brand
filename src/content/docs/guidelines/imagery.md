@@ -1,29 +1,34 @@
 ---
 title: Imagery
-description: The photographic and visual style.
+description: The photographic and visual style — analogue, editorial, documentary.
 ---
-
-Imagery is where the cloud feeling becomes literal. Favor photographs with air in
-them — open skies, soft light, a sense of space and quiet — over busy, saturated,
-crowded shots.
 
 ## Direction
 
-- **Light and atmosphere over spectacle.** Morning mist, low sun, a sea of clouds
-  from a mountain viewpoint. Mood over postcard.
-- **Room to breathe.** Negative space is part of the composition, not wasted space —
-  it's also where text can sit comfortably.
-- **Human but unhurried.** People are welcome in frame when the moment feels real
-  and calm, not staged.
-- **Honest places.** Real locations and textures over generic stock.
+- **Analogue and editorial feeling.** A documentary photography style, not a
+  produced one.
+- **Chosen, controlled tones.** A deliberate palette, not whatever a scene
+  happened to offer.
+- **Blurred elements.** Motion and depth of field are part of the
+  composition, not a flaw to correct.
+- ***Clair-obscur* — burned black and white.** High-contrast monochrome
+  where it serves the moment.
 
-## Avoid
+## Avoid image-bank photography above all
 
-- Heavy filters, crushed contrast, or oversaturation.
-- Crowded, chaotic compositions with no place to rest the eye.
-- Clichéd "tourist" framing that flattens a place into a checklist.
+Nothing that looks staged, licensed, or interchangeable. If an image could
+belong to any travel brand, it doesn't belong to this one.
 
-:::tip
-A useful gut check: does the image make you want to look up and wonder what's
-beyond the frame? That's the cloud feeling.
-:::
+## Reviewing an image
+
+Ask: does it name something specific (a real place, a real texture) rather
+than a generic postcard view? Does it admit imperfection — unposed, a little
+raw — rather than a polished, staged moment?
+
+## Cultural depth to draw on
+
+The cloud has cross-cultural resonance the brand can tap when a campaign
+needs it: the Japanese sea of clouds (*unkai*) and the clouds of *ukiyo-e*;
+the French *avoir la tête dans les nuages* and *être sur un petit nuage*;
+the Latin *post nubila Phoebus* — after clouds, the sun. Wells to draw from,
+not references to obey.

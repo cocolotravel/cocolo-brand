@@ -1,14 +1,14 @@
 ---
-import { typographySizes, typographyFamilies } from "./tokens.js";
+import { typographySizes, typographyFamilies, typographyWeights } from "./tokens.js";
 const sizes = [...typographySizes].reverse();
 ---
 
 <section>
   {typographyFamilies.map((f) => (
     <div class="family">
-      <code class="fname">{f.label}</code>
-      <p class="specimen" style={`font-family: var(${f.cssVar})`}>
-        What's behind the cloud?
+      <code class="fname">{f.label} · {f.value}</code>
+      <p class="specimen" style={`font-family: var(${f.cssVar}, serif)`}>
+        Faire voyager son âme d'enfant
       </p>
     </div>
   ))}
@@ -18,8 +18,19 @@ const sizes = [...typographySizes].reverse();
   {sizes.map((s) => (
     <div class="row">
       <code class="rlabel">{s.label} · {s.value}</code>
-      <span class="sample" style={`font-size: var(${s.cssVar}); font-family: var(--typography-family-display, serif);`}>
-        Travel as beautiful uncertainty
+      <span class="sample" style={`font-size: var(${s.cssVar}); font-family: var(--font-style-roslindale, serif);`}>
+        Every detail is considered
+      </span>
+    </div>
+  ))}
+</section>
+
+<section class="weights">
+  {typographyWeights.map((w) => (
+    <div class="row">
+      <code class="rlabel">{w.label} · {w.value}</code>
+      <span class="sample" style={`font-weight: var(${w.cssVar}); font-family: var(--font-style-inter, sans-serif);`}>
+        The drive takes 2.5 hours
       </span>
     </div>
   ))}
@@ -27,10 +38,10 @@ const sizes = [...typographySizes].reverse();
 
 <style>
   .family { padding: 0.75rem 0; border-bottom: 1px solid var(--sl-color-gray-5); }
-  .fname { font-size: 0.75rem; color: var(--sl-color-text-accent); text-transform: capitalize; }
+  .fname { font-size: 0.75rem; color: var(--sl-color-text-accent); }
   .specimen { font-size: 2rem; margin: 0.2rem 0 0; }
-  .scale { margin-top: 1.5rem; }
+  .scale, .weights { margin-top: 1.5rem; }
   .row { display: flex; align-items: baseline; gap: 1.25rem; padding: 0.5rem 0; border-bottom: 1px solid var(--sl-color-gray-6); }
   .rlabel { min-width: 130px; font-size: 0.72rem; color: var(--sl-color-text-accent); white-space: nowrap; }
-  .sample { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sample { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: var(--font-style-inter, sans-serif); }
 </style>

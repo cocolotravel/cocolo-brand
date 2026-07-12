@@ -1,22 +1,40 @@
 ---
 title: Typography
-description: Typefaces, scale, and weights — live from the brand tokens.
+description: Roslindale and Inter — specimens and scale, live from the brand tokens.
 ---
 
 import TypeScale from '../../../components/TypeScale.astro';
 
-Type carries the brand's voice. A characterful display face for headings and
-moments of personality, a calm humanist sans for everything you actually read.
-The specimens and scale below are rendered live from the tokens.
+Two typefaces carry the system: **Roslindale** (Variable) for display, and
+**Inter** for text. The specimens, scale, and weights below are rendered
+live from the tokens.
 
 <TypeScale />
 
 ## Using type
 
-Lead with the **display** face for headings and the occasional oversized phrase —
-it's where the brand's warmth shows. Keep body copy in the **body** face at a
-comfortable reading size, and resist setting long passages in the display face.
+**Roslindale** is where the brand's warmth shows — headlines, an occasional
+oversized phrase, a lead paragraph. Never set a long passage in it.
+**Inter** handles everything meant to be read at length.
 
-The scale is a system, not a buffet: pick the step that fits the hierarchy rather
-than nudging arbitrary pixel values. Consistent steps are what make a set of pages
-feel like one brand.
+The scale runs from `--font-size-xs` (12px) up through `--font-size-h1`
+(64px), with `--font-size-h2` through `--font-size-h5` as the steps between.
+Pick the step that fits the hierarchy rather than nudging arbitrary pixel
+values — consistent steps are what make a set of pages feel like one brand.
+
+Weights range from `--font-weights-extralight` (200) to
+`--font-weights-black` (900). Reach for `regular` and `semibold` for nearly
+everything; the extremes (`extralight`, `black`) are for display moments,
+not body copy.
+
+Line height and letter spacing are tokens too — `--line-heights-tight`
+through `--line-heights-relaxed`, and `--letter-spacing-tight` through
+`--letter-spacing-wider`. Use them instead of ad-hoc values so type rhythm
+stays consistent across pages.
+
+:::note[Roslindale is a licensed font]
+Roslindale Variable (Displaay Type Foundry) isn't distributed through Google
+Fonts. Any app using `--font-style-roslindale` needs the self-hosted font
+files in place, or it falls back to a plain serif — never invent a
+substitute typeface.
+:::

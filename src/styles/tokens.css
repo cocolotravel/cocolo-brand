@@ -1,12 +1,82 @@
 /* ------------------------------------------------------------------
-   Live brand tokens.
-   This pulls the generated token CSS straight from the assets bucket,
-   so this site always reflects the current published brand values —
-   the same file every other Cocolo app consumes. Single source of truth.
-   ------------------------------------------------------------------ */
-@import url("https://assets.cocolotravel.com/brand/tokens.css");
+   Maps the brand tokens onto Starlight's own theme variables, so the
+   documentation site itself looks like the brand it documents.
+   Starlight exposes a documented set of --sl-color-* variables; we point
+   them at our semantic --color-text-* / --color-background-* tokens, and
+   at the --color-brand-* palette only where no semantic token fits.
 
-/* Brand fonts. These are the placeholder families from the starter; swap
-   the @import for your licensed/self-hosted fonts once finalized (and prefer
-   hosting them on the assets bucket rather than Google Fonts for production). */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap");
+   Important: Starlight derives --sl-color-text-accent and
+   --sl-color-bg-accent FROM --sl-color-accent(-high) by default (see
+   @astrojs/starlight/style/props.css). Site title, the primary hero
+   button, badges, and the active nav/toc state all read from that single
+   chain — so it's set once here, not overridden downstream, to keep them
+   in sync.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Brand typography into Starlight */
+  --sl-font: var(--font-style-inter, system-ui, sans-serif);
+  --sl-font-system: var(--font-style-inter, system-ui, sans-serif);
+
+  /* Dark mode is Starlight's default. Background is Sumi (deep navy).
+     Kin (the gold gleam) drives the one prominent accent against it —
+     site title, primary button, active nav state — a single recurring
+     mark, never a background. Kodama carries the quieter accent role
+     (borders, focus outlines, badge borders). */
+  --sl-color-accent-low: var(--color-background-secondary, #f7f5da);
+  --sl-color-accent: var(--color-brand-kodama, #8a9a82);
+  --sl-color-accent-high: var(--color-brand-kin, #ffc916);
+
+  --sl-color-white: var(--color-text-on-dark, #fffef5);
+  --sl-color-black: var(--color-background-dark-mode, #1b3848);
+  --sl-color-text: var(--color-text-on-dark, #fffef5);
+  --sl-color-bg: var(--color-background-dark-mode, #1b3848);
+  --sl-color-bg-nav: var(--color-background-dark-mode, #1b3848);
+  --sl-color-bg-sidebar: var(--color-background-dark-mode, #1b3848);
+}
+
+/* Light theme overrides — Washi carries the page, Sumi carries the type
+   and drives the prominent accent (site title, primary button). Kin only
+   surfaces in the few spots Starlight reserves for accent-high (search
+   focus ring, a badge variant) — still a gleam, not a repeat. */
+:root[data-theme="light"] {
+  --sl-color-accent-low: var(--color-background-secondary, #f7f5da);
+  --sl-color-accent: var(--color-brand-sumi, #1b3848);
+  --sl-color-accent-high: var(--color-brand-kin, #ffc916);
+
+  /* Starlight swaps meaning per theme: in light mode "black" holds the
+     light value (legible text on the dark accent-colored button/badges)
+     and "white" holds the dark value. */
+  --sl-color-white: var(--color-text-primary, #1b3848);
+  --sl-color-black: var(--color-background-primary, #fffef5);
+  --sl-color-text: var(--color-text-primary, #1b3848);
+  --sl-color-bg: var(--color-background-primary, #fffef5);
+  --sl-color-bg-nav: var(--color-background-primary, #fffef5);
+  --sl-color-bg-sidebar: var(--color-background-primary, #fffef5);
+  --sl-color-gray-6: var(--color-background-secondary, #f7f5da);
+  --sl-color-gray-7: var(--color-background-primary, #fffef5);
+}
+
+/* Display face for headings and the site title — never set a long passage
+   in it, so it's scoped to headings only. */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.site-title {
+  font-family: var(--font-style-roslindale, Georgia, serif);
+  letter-spacing: var(--letter-spacing-tight, -0.02em);
+}
+
+/* Links keep the ink color of the surrounding text; the underline is what
+   marks them as interactive, not a separate accent hue. */
+.sl-markdown-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* A soft, transparent hero — no default Starlight gradient overlay */
+.hero {
+  --overlay-blurple: transparent;
+}

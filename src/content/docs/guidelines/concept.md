@@ -1,42 +1,66 @@
 ---
 title: The idea
-description: The thinking behind the cloud — what Cocolo means and who it's for.
+description: The vision behind COCOLO — Travel Artisans, the four pillars, and who it's for.
 ---
 
-## Clouds
+## The vision — Travel Artisans
 
-The brand is built on a single image: a cloud. Not as decoration, but because of
-what a cloud *does* to a person looking up at it.
+COCOLO was born from a simple conviction: Japan is not a destination. It is a
+series of moments you didn't know to look for.
 
-A cloud is the first mystery many of us meet as children. Before we have the words
-to explain it, we're already wondering what's behind it, what it's shaped like,
-where it's going. It's soft, gentle, and quietly intriguing — and that curiosity
-never really leaves us. The travelers we're for are adults who kept it.
+We build journeys for people who are curious — not just about places, but
+about what lies behind them. The alley behind the shrine. The family who has
+been making the same knife for four generations. The tea master who receives
+three guests a week, and occasionally, ours.
 
-## Who we're for
+Every detail is considered. Every transfer, every room, every guide chosen
+with intention — so that when something unexpected happens, and it will, you
+are free to follow it. **That is not a flaw in the plan. That is the plan.**
 
-People with a sense of *art de vivre* — who treat travel as something to savor
-rather than tick off. They're sophisticated but not jaded; they've kept a child's
-openness to wonder. And they understand that travel brings its share of surprises —
-that you don't control the weather, and that the unplanned moment is often the one
-you remember.
+No two COCOLO journeys are the same. Each one is built around a person, a
+rhythm, a particular way of being curious. What you experience is not a
+programme — it is Japan, as it actually is. The doors that don't open for
+everyone. The places that don't appear on any list. Raw, alive, and entirely
+your own. Shared with the people you choose to bring, remembered long after
+the last train home.
 
-That's the feeling the brand holds: **travel as a state of beautiful uncertainty.**
-Not the agency promise of a frictionless, fully-controlled trip, but something
-truer and more alive — the magic that lives in not knowing exactly what's behind
-the next cloud.
+Tagline: **Faire voyager son âme d'enfant.**
+
+## The four pillars
+
+Everything — copy, design, photography, product — is measured against these
+four. Each carries a concrete rule; see [Voice & tone](/guidelines/voice/)
+for how they apply to writing.
+
+1. **Kodawari** — the pursuit of excellence in every detail. Nothing left to
+   chance.
+2. **Sensorial** — speak to the senses, the heart, the inner child. Wonder,
+   discovery, curiosity.
+3. **Stillness** — calm, confident, well-informed. The tone of a quality
+   magazine.
+4. **Wabi-Sabi** — the beauty of imperfection, the magic of unexpected
+   discovery.
+
+## Who COCOLO is for
+
+Curious travelers with a sense of *art de vivre* — people who savor rather
+than tick off a list. Sophisticated but not jaded; they kept a child's
+openness to wonder. They understand that travel brings its share of
+surprises, that you don't control the weather, and that the unplanned moment
+is often the one that stays.
+
+COCOLO serves French-speaking and international visitors coming to Japan.
+The identity is deliberately built to travel beyond Japan.
 
 ## What this means in practice
 
-- **Wonder over polish.** The brand should feel like it's inviting you to look up,
-  not selling you a package.
-- **Calm, not loud.** Open sky, room to breathe. Restraint is the point.
-- **Honest about surprise.** We don't pretend travel is perfectly smooth; we frame
-  the unexpected as part of the beauty.
+- **Specificity over adjectives.** Name the detail, not the feeling it's
+  supposed to produce.
+- **Calm, not loud.** Room to breathe, in copy and in layout. Restraint is
+  the point.
+- **Honest about the unplanned.** We don't pretend travel is perfectly
+  smooth; the unexpected is framed as part of the beauty, not apologized for.
 - **Grown-up, not childish.** Childlike wonder, expressed with taste.
 
-:::note[Status]
-The brand is mid-rebrand. The cloud concept and this philosophy are settled
-direction; the name itself is still being decided. Until then, the brand is
-**Cocolo Travel**.
-:::
+See [The logo](/guidelines/logo/) for how these four pillars carry through
+into the cloud symbol itself.

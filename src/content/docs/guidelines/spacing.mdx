@@ -1,18 +1,40 @@
 ---
 title: Spacing
-description: The spacing scale, rendered to size from the brand tokens.
+description: The 8px spacing scale and grid, plus layout conventions.
 ---
 
 import SpacingScale from '../../../components/SpacingScale.astro';
 
-Spacing is the quietest part of the system and the one that most determines whether
-a layout feels calm or cramped. One scale, used consistently, does most of the work.
+Spacing is the quietest part of the system and the one that most determines
+whether a layout feels calm or cramped.
 
 <SpacingScale />
 
 ## Using spacing
 
-Prefer generous space over decoration. The cloud aesthetic depends on room to
-breathe — when a layout feels off, the answer is more often spacing than another
-element. Use the scale steps rather than ad-hoc values so rhythm stays consistent
-across pages and apps.
+**Spacing is generosity.** The identity depends on room to breathe — when a
+layout feels wrong, the answer is almost always more space, not another
+element. Reach for a larger spacing step before adding another element.
+
+No dedicated spacing tokens are published yet; hold to multiples of the 8px
+unit until they are, so the rhythm is at least consistent even without a
+named scale to point at.
+
+## Desktop grid
+
+| Property | Value |
+|---|---|
+| Frame | 1440px |
+| Margins | 128px |
+| Content zone | 1184px |
+| Columns | 12 |
+| Gutter | 32px |
+
+## Layout conventions
+
+- **Contained images are the default.** Full-bleed is used sparingly, for
+  moments that earn it.
+- **The vertical title module** (*tate*, tategaki-inspired) is a COCOLO
+  signature, used for the Itinéraires and Étapes sections. It sits on a
+  defined seam against the photography — treat its placement as fixed
+  geometry, not a free composition.

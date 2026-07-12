@@ -1,48 +1,15 @@
 /* ------------------------------------------------------------------
-   Maps the brand tokens onto Starlight's own theme variables, so the
-   documentation site itself looks like the brand it documents.
-   Starlight exposes a documented set of --sl-color-* variables; we point
-   them at our --color-cloud-* / --color-accent-* tokens.
+   Live brand tokens.
+   This pulls the generated token CSS straight from the assets bucket,
+   so this site always reflects the current published brand values —
+   the same file every other COCOLO app consumes. Single source of truth.
    ------------------------------------------------------------------ */
+@import url("https://assets.cocolotravel.com/brand/tokens.css");
 
-:root {
-  /* Brand typography into Starlight */
-  --sl-font: var(--typography-family-body, system-ui, sans-serif);
-  --sl-font-system: var(--typography-family-body, system-ui, sans-serif);
-
-  /* Accent = brand sky */
-  --sl-color-accent-low: var(--color-cloud-mist, #dce5ee);
-  --sl-color-accent: var(--color-cloud-sky, #5b8db8);
-  --sl-color-accent-high: var(--color-cloud-storm, #2c3e50);
-
-  /* Text + surfaces (dark theme is Starlight's default) */
-  --sl-color-white: #ffffff;
-  --sl-color-text-accent: var(--color-cloud-haze, #a8bed2);
-}
-
-/* Light theme overrides — map onto the soft cloud palette */
-:root[data-theme="light"] {
-  --sl-color-accent-low: var(--color-cloud-mist, #dce5ee);
-  --sl-color-accent: var(--color-cloud-sky, #5b8db8);
-  --sl-color-accent-high: var(--color-cloud-ink, #16222e);
-
-  --sl-color-white: var(--color-cloud-ink, #16222e);     /* "white" = darkest text in light mode */
-  --sl-color-gray-7: var(--color-cloud-white, #f7f9fb);  /* page background */
-  --sl-color-gray-6: var(--color-cloud-white, #f7f9fb);
-  --sl-color-black: var(--color-cloud-white, #f7f9fb);
-  --sl-color-text: var(--color-cloud-storm, #2c3e50);
-}
-
-/* Display face for headings and the site title */
-.sl-markdown-content h1,
-.sl-markdown-content h2,
-.sl-markdown-content h3,
-.site-title {
-  font-family: var(--typography-family-display, Georgia, serif);
-  letter-spacing: -0.01em;
-}
-
-/* A soft cloud-tinted hero on the splash/home template */
-.hero {
-  --overlay-blurple: transparent;
-}
+/* Brand fonts.
+   Inter is open-source and loaded from Google Fonts. Roslindale Variable is a
+   licensed display face (Displaay Type Foundry) — it is not on Google Fonts,
+   so it must be self-hosted from the assets bucket once the license/files are
+   in place. Until then, --font-style-roslindale falls back to a serif stack
+   wherever it's used, so headings degrade gracefully rather than breaking. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;900&display=swap");

@@ -1,30 +1,52 @@
 ---
 title: Colors
-description: The Cocolo color palette, rendered live from the brand tokens.
+description: The COCOLO color palette, rendered live from the brand tokens.
 ---
 
 import ColorSwatches from '../../../components/ColorSwatches.astro';
 
-The palette is built around clouds: a soft, light ground that lets content breathe,
-with sky and storm for structure and contrast, and warm accents for the sun behind
-the cloud. Every swatch below is read live from the published tokens — click any
-chip or value to copy it.
+Five canonical colors: **Washi**, **Millennium Washi**, **Kodama**, **Sumi**,
+and **Kin**. Every swatch below is read live from the published tokens —
+click any chip or value to copy it.
 
 <ColorSwatches />
 
+## Two tiers
+
+The system has two tiers. **Semantic tokens** (`--color-text-*`,
+`--color-background-*`, `--color-border-*`) describe a *job* and are what
+code should use. **Brand primitives** (`--color-brand-*`) define the palette
+so the semantic tokens have something to point at — reach for them only when
+no semantic token fits. Write `var(--color-text-primary)`, not
+`var(--color-brand-sumi)`: if the brand ever re-points its text color, code
+using the semantic token follows automatically.
+
 ## Using color
 
-The cloud neutrals carry almost everything — backgrounds, text, surfaces, and
-dividers. Reach for **sky** as the primary interactive color (links, buttons,
-focus) and keep the warm **accents** rare: a small amount of dawn or gold is a
-highlight, not a background.
-
-A simple test: if a page feels busy, the fix is usually less accent, not more
-neutral. The brand should feel like open sky, not a crowded one.
+- **The washi tones carry everything.** Washi and Millennium Washi carry
+  nearly every surface — backgrounds, cards, large fields. The identity
+  should feel like paper, not like a screen.
+- **Sumi is the voice of the type.** Body text, headings, primary UI on
+  light backgrounds.
+- **Kodama supports.** Dividers, quiet accents, secondary states. Never a
+  shout.
+- **Kin is a gleam, never a background.** A rule, a small mark, a single
+  moment on a page. If a layout feels busy, the fix is less Kin, not more.
+- Do not invent tints, shades, or opacities. If a value is needed that
+  doesn't exist, it goes into Tokens Studio first — not into a stylesheet.
 
 :::caution[Contrast]
-Light cloud tones on white fail accessibility contrast for body text. Use
-**storm** or **ink** for text on light backgrounds, and reserve the pale tones
-for surfaces and large display elements. When in doubt, check the pairing against
-WCAG AA (4.5:1 for body text).
+`--color-text-support` (Kodama, `#8a9a82`) is *named* for captions and
+secondary labels, but only reaches **2.95:1** on Washi and **2.71:1** on
+Millennium Washi — both below WCAG AA (4.5:1) for text. Treat it as
+decorative until it's re-pointed at the source; don't use it for anything
+someone needs to read. `--color-text-primary` (Sumi) clears AAA (11–12:1)
+on both backgrounds — use it for any real body copy.
 :::
+
+## The live source
+
+The authoritative token file is
+`https://assets.cocolotravel.com/brand/tokens.css` — this page (and every
+COCOLO app) reads from it directly. Nothing here is a hand-copied value that
+can drift out of date.
