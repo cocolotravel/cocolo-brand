@@ -26,7 +26,10 @@ function weightStyle(s) {
 <section class="scale">
   {docScale.map((s) => (
     <div class="row">
-      <code class="rlabel">{s.key} · {s.raw}</code>
+      <div class="rlabel">
+        <span class="name">{s.key}</span>
+        <code class="raw">{s.raw}</code>
+      </div>
       <span
         class="sample"
         style={`font-size: var(${s.cssVar}); font-family: ${fontVar(s.font)}; font-weight: ${weightStyle(s)}; line-height: ${s.lineHeight ?? "normal"};`}
@@ -68,9 +71,11 @@ function weightStyle(s) {
 
 <style>
   .scale { margin: 1rem 0 1.5rem; }
-  .row { display: flex; align-items: baseline; gap: 1.25rem; padding: 0.5rem 0; border-bottom: 1px solid var(--sl-color-gray-6); }
-  .rlabel { min-width: 150px; font-size: 0.72rem; color: var(--sl-color-text-accent); white-space: nowrap; }
-  .sample { overflow: hidden; text-overflow: ellipsis; }
+  .row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.25rem 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--sl-color-gray-6); }
+  .rlabel { display: flex; flex-direction: column; gap: 0.15rem; flex: 0 0 160px; max-width: 160px; }
+  .rlabel .name { font-size: 0.78rem; font-weight: 600; color: var(--sl-color-text-accent); }
+  .rlabel .raw { font-size: 0.62rem; line-height: 1.3; color: var(--sl-color-text-accent); opacity: 0.8; white-space: normal; overflow-wrap: anywhere; }
+  .sample { flex: 1 1 180px; min-width: 0; overflow-wrap: break-word; }
   .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
   .specs th, .specs td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); vertical-align: top; }
   .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
