@@ -15,6 +15,27 @@ Add this to the `<head>` of any site or app you control:
 <link rel="stylesheet" href="https://assets.cocolotravel.com/brand/tokens.css" />
 ```
 
+## doc.css: the document base stylesheet
+
+`doc.css` is the base stylesheet for COCOLO's document pages — roadbooks,
+proposals, and apps. It turns the [Document scale](/guidelines/typography/#document-scale)
+above into ready classes (`t-title`, `t-section`, `row`, `callout`, `chip`,
+`btn`, the bottom tab bar, print rules) instead of every app reimplementing
+them by hand. Like `tokens.css`, everything in it reads tokens — no hex
+colors, no pixel sizes.
+
+It needs `tokens.css` first, so load it second:
+
+```html
+<link rel="stylesheet" href="https://assets.cocolotravel.com/brand/tokens.css" />
+<link rel="stylesheet" href="https://assets.cocolotravel.com/brand/doc.css" />
+<body class="doc">...</body>
+```
+
+See [`docs/doc-css.md`](https://github.com/axelder/assets/blob/main/docs/doc-css.md)
+in the `axelder/assets` repo for the full class list, the rules it enforces,
+and how to change and test it.
+
 ## Use the semantic tokens, not the brand primitives
 
 The system has two tiers. **Semantic tokens** (`--color-text-*`,

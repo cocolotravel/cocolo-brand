@@ -64,9 +64,10 @@ size.
 
 <DocScale />
 
-Sizes and line heights in the table are read live from `--doc-*` and
-`--doc-lh-*`; font and weight pairings follow the brand specification (marked
-with `*` where no matching weight or line-height token is published yet).
+Sizes, line heights, and weights in the table are all read live from
+`--doc-*`, `--doc-lh-*`, and `--font-weights-*`; only the font family and the
+"used for" description are authored from the brand specification, since
+tokens.css has no per-style font-family variable to read them from.
 
 **Rules**
 - **Units.** The tokens are in `rem`, so text follows the reader's own
