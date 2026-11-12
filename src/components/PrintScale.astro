@@ -1,0 +1,31 @@
+---
+import { printScale, printBodyLineHeight } from "./tokens.js";
+---
+
+<table class="specs">
+  <thead>
+    <tr><th>Style</th><th>Used for</th><th>Token</th><th>Point size (A4)</th></tr>
+  </thead>
+  <tbody>
+    {printScale.map((s) => (
+      <tr>
+        <td><code>{s.key}</code></td>
+        <td>{s.usedFor}</td>
+        <td><code>var({s.cssVar})</code></td>
+        <td>{s.pt}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p class="footnote">
+  Body line height tightens to <code>{printBodyLineHeight}</code> in print
+  (<code>--doc-lh-body</code>); the other styles keep their screen line
+  heights.
+</p>
+
+<style>
+  .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .specs th, .specs td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); }
+  .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
+  .footnote { font-size: 0.8rem; color: var(--sl-color-text-accent); margin-top: 0.75rem; }
+</style>

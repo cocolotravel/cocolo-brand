@@ -4,6 +4,8 @@ description: Roslindale and Inter — specimens and scale, live from the brand t
 ---
 
 import TypeScale from '../../../components/TypeScale.astro';
+import DisplayScale from '../../../components/DisplayScale.astro';
+import DocScale from '../../../components/DocScale.astro';
 
 Two typefaces carry the system: **Roslindale** (Variable) for display, and
 **Inter** for text. The specimens, scale, and weights below are rendered
@@ -38,3 +40,60 @@ Fonts. Any app using `--font-style-roslindale` needs the self-hosted font
 files in place, or it falls back to a plain serif — never invent a
 substitute typeface.
 :::
+
+## Display scale, responsive
+
+For the website and marketing pages. `--display-h1` through `--display-h5`
+are fluid — each is a `clamp(min, rem + vw, max)` that grows smoothly from a
+360px phone to a 1024px screen, rather than jumping between fixed
+breakpoints. At 1024px and above they equal the existing `--font-size-h1`
+through `-h5`; on a 360px phone they're smaller. The phone-width values are a
+draft, to be confirmed after an audit of the live website.
+
+<DisplayScale />
+
+Both columns above are computed at build time from each token's `clamp()`
+expression — never typed in by hand.
+
+## Document scale
+
+For roadbooks, proposals, apps, and anything read on a phone, a tablet, or
+printed on paper — the display scale above is too large for them (its
+smallest heading is 24px). Use these named styles, never an inline pixel
+size.
+
+<DocScale />
+
+Sizes and line heights in the table are read live from `--doc-*` and
+`--doc-lh-*`; font and weight pairings follow the brand specification (marked
+with `*` where no matching weight or line-height token is published yet).
+
+**Rules**
+- **Units.** The tokens are in `rem`, so text follows the reader's own
+  browser settings. The four larger styles are fluid and always keep a `rem`
+  part inside `clamp()`, so browser zoom still works — never use `vw` alone.
+  `body`, `meta`, and `caption` are fixed: reading text doesn't change size
+  from one phone to another.
+- **Minimum sizes.** Body 16px, meta 14px, caption 12px (legal text and
+  badges only). Nothing is smaller than 12px except the tab-bar labels at
+  11px. The checker in the assets repository enforces this.
+- **Alignment.** Left-aligned, always. Never justify text — on a narrow
+  screen it leaves uneven gaps.
+- **Line length.** At most 70 characters (`--measure-text`). On a phone the
+  width limits it first, which gives about 35 to 45 characters, so keep side
+  padding at 16px or more.
+- **Markdown in roadbook text.** `##` renders as `day`, `###` as `item`,
+  `####` as `body` at weight 600.
+- **Rows** (transports, services, hotels). Title in `body` at weight 600,
+  details in `meta` on the line below. Names a traveller needs are never
+  truncated — the row grows.
+- **Dates** such as "09 novembre": `meta` at weight 600, tabular numerals, no
+  wrapping.
+- **Letter-spacing.** None for Inter. Roslindale `title` has -0.01em.
+  Uppercase 12px labels have +0.06em.
+- **Touch.** Tap targets at least 44px (`--tap-target-min`), rows at least
+  48px (`--row-min-height`) — see [Layout](/guidelines/layout/).
+- **Text-size adjustment.** Set `text-size-adjust: 100%` (never `none`,
+  which breaks accessibility zoom).
+- **Print (A4).** The same styles switch to points — see
+  [Print](/guidelines/print/) for the table.

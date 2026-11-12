@@ -1,0 +1,39 @@
+---
+import { displayScale } from "./tokens.js";
+---
+
+<section class="scale">
+  {displayScale.map((s) => (
+    <div class="row">
+      <code class="rlabel">{s.label} · {s.raw}</code>
+      <span class="sample" style={`font-size: var(${s.cssVar}); font-family: var(--font-style-roslindale, serif);`}>
+        Every detail is considered
+      </span>
+    </div>
+  ))}
+</section>
+
+<table class="specs">
+  <thead>
+    <tr><th>Token</th><th>360px</th><th>1024px and above</th></tr>
+  </thead>
+  <tbody>
+    {displayScale.map((s) => (
+      <tr>
+        <td><code>var({s.cssVar})</code></td>
+        <td>{s.px360}px</td>
+        <td>{s.px1024}px</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .scale { margin: 1rem 0 1.5rem; }
+  .row { display: flex; align-items: baseline; gap: 1.25rem; padding: 0.5rem 0; border-bottom: 1px solid var(--sl-color-gray-6); }
+  .rlabel { min-width: 150px; font-size: 0.72rem; color: var(--sl-color-text-accent); white-space: nowrap; }
+  .sample { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .specs th, .specs td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); }
+  .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
+</style>

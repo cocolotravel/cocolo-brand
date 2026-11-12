@@ -4,6 +4,7 @@ description: The COCOLO color palette, rendered live from the brand tokens.
 ---
 
 import ColorSwatches from '../../../components/ColorSwatches.astro';
+import TextContrast from '../../../components/TextContrast.astro';
 
 Five canonical colors: **Washi**, **Millennium Washi**, **Kodama**, **Sumi**,
 and **Kin**. Every swatch below is read live from the published tokens —
@@ -32,17 +33,26 @@ using the semantic token follows automatically.
   shout.
 - **Kin is a gleam, never a background.** A rule, a small mark, a single
   moment on a page. If a layout feels busy, the fix is less Kin, not more.
+- **Contrast.** Sumi on Washi is the workhorse pairing and clears WCAG AA
+  comfortably. Kodama and Kin on light backgrounds do **not** clear 4.5:1 —
+  never set body text in them. Kodama is never a text colour at any size
+  (the alias `--color-text-support` is a name, not a permission) and never a
+  fill behind text. Filled chips and rows are **Sumi with Washi text**;
+  Kodama stays for borders, icons, dividers, and chart series. Status colours
+  follow the callout rules: the base colours for bars and icons, the `-text`
+  tokens for text. Aim for AA (4.5:1) on all body copy, 3:1 on large display
+  type.
 - Do not invent tints, shades, or opacities. If a value is needed that
-  doesn't exist, it goes into Tokens Studio first — not into a stylesheet.
+  doesn't exist, it goes into `tokens.css` first — see
+  [Using the tokens](/guidelines/tokens/).
 
-:::caution[Contrast]
-`--color-text-support` (Kodama, `#8a9a82`) is *named* for captions and
-secondary labels, but only reaches **2.95:1** on Washi and **2.71:1** on
-Millennium Washi — both below WCAG AA (4.5:1) for text. Treat it as
-decorative until it's re-pointed at the source; don't use it for anything
-someone needs to read. `--color-text-primary` (Sumi) clears AAA (11–12:1)
-on both backgrounds — use it for any real body copy.
-:::
+## Text contrast
+
+Every ratio below is computed at build time from the live token values — not
+typed in. Failing pairs are shown, not hidden: several are failures on
+purpose, to make the rule above concrete.
+
+<TextContrast />
 
 ## The live source
 

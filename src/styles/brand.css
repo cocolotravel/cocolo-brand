@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------------
    Live brand tokens.
-   This pulls the generated token CSS straight from the assets bucket,
+   This pulls the published token CSS straight from the assets bucket,
    so this site always reflects the current published brand values —
    the same file every other COCOLO app consumes. Single source of truth.
    ------------------------------------------------------------------ */

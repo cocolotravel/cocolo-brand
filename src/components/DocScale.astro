@@ -1,0 +1,78 @@
+---
+import { docScale } from "./tokens.js";
+
+/** @type {Record<string, string>} */
+const SPECIMENS = {
+  title: "Dix jours à travers le Japon",
+  section: "Hébergements",
+  day: "Jour 3 — Kyoto",
+  item: "Ryokan Yoshida-ya",
+  body: "La route traverse la vallée avant de rejoindre la gare.",
+  meta: "09 novembre · 14:30",
+  caption: "Tarifs sujets à modification",
+  navlabel: "Itinéraire",
+};
+
+/** @param {string} font */
+function fontVar(font) {
+  return font === "Roslindale" ? "var(--font-style-roslindale, serif)" : "var(--font-style-inter, sans-serif)";
+}
+/** @param {{ weightToken?: string, weight: number|string }} s */
+function weightStyle(s) {
+  return s.weightToken ? `var(--font-weights-${s.weightToken})` : String(s.weight);
+}
+---
+
+<section class="scale">
+  {docScale.map((s) => (
+    <div class="row">
+      <code class="rlabel">{s.key} · {s.raw}</code>
+      <span
+        class="sample"
+        style={`font-size: var(${s.cssVar}); font-family: ${fontVar(s.font)}; font-weight: ${weightStyle(s)}; line-height: ${s.lineHeight ?? "normal"};`}
+      >
+        {SPECIMENS[s.key]}
+      </span>
+    </div>
+  ))}
+</section>
+
+<table class="specs">
+  <thead>
+    <tr>
+      <th>Style</th><th>Used for</th><th>Token</th><th>360px</th><th>1024px+</th>
+      <th>Font, weight</th><th>Line height</th>
+    </tr>
+  </thead>
+  <tbody>
+    {docScale.map((s) => (
+      <tr>
+        <td><code>{s.key}</code></td>
+        <td>{s.usedFor}</td>
+        <td><code>var({s.cssVar})</code></td>
+        <td>{s.px360}px</td>
+        <td>{s.px1024}px</td>
+        <td>
+          {s.font} {s.weight}
+          {s.weightNote && <sup title={s.weightNote}>*</sup>}
+        </td>
+        <td>
+          {s.lineHeight ?? "—"}
+          {!s.lhVar && <sup title="No --doc-lh-navlabel token published yet">*</sup>}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p class="footnote">* not backed by a published token yet — see the note above the table.</p>
+
+<style>
+  .scale { margin: 1rem 0 1.5rem; }
+  .row { display: flex; align-items: baseline; gap: 1.25rem; padding: 0.5rem 0; border-bottom: 1px solid var(--sl-color-gray-6); }
+  .rlabel { min-width: 150px; font-size: 0.72rem; color: var(--sl-color-text-accent); white-space: nowrap; }
+  .sample { overflow: hidden; text-overflow: ellipsis; }
+  .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
+  .specs th, .specs td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); vertical-align: top; }
+  .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
+  .footnote { font-size: 0.75rem; color: var(--sl-color-text-accent); margin-top: 0.4rem; }
+</style>

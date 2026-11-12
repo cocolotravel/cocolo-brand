@@ -23,18 +23,20 @@ The site runs at `http://localhost:4321`.
 
 ```
 src/
-  content/docs/guidelines/   Guideline pages (colors, typography, spacing, logo, voice, imagery, tokens...)
-  components/                Astro components used in the docs (color swatches, type/spacing scales)
+  content/docs/guidelines/   Guideline pages (colors, typography, spacing, layout, print, logo, voice, imagery, tokens...)
+  components/                Astro components used in the docs (color swatches, type/doc/display scales, contrast table)
   styles/                    Brand CSS layered on top of Starlight's theme
 public/
-  brand/tokens.css           Live design tokens
+  brand/tokens.css           Offline/local-dev fallback snapshot of the published tokens (see below)
 ```
 
 Sidebar navigation and site metadata are configured in [astro.config.mjs](astro.config.mjs).
 
 ## Design tokens
 
-Colors, type, and spacing are driven by tokens pulled from the `axelder/assets` repo (see `public/brand/tokens.css` and `src/styles/tokens.css`). See the "Using the tokens" guidelines page for how to consume them in other projects.
+Colors, type, spacing, layout, and print values are all read **at build time** from the live `tokens.css` published by the `axelder/assets` repo (`src/components/tokens.js` fetches it; see the "Using the tokens" guidelines page for how the publish pipeline works and how to consume the tokens in other projects).
+
+`public/brand/tokens.css` in this repo is **not** that live source — it's a hand-maintained fallback snapshot used only if the live fetch fails (e.g. offline local dev). It must be refreshed by hand (copy it from the assets repo) whenever the published tokens change; `tokens.js` logs a warning and the build fails outright if the source in use is missing a token the site depends on.
 
 ## Deployment
 

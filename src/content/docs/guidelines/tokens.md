@@ -43,11 +43,16 @@ automatically.
 
 ## Where the values come from
 
-```
-Designer edits in Figma (Tokens Studio)
-   → pushes DTCG tokens.json to the axelder/assets repo
-   → a GitHub Action regenerates tokens.css
-   → publishes it to assets.cocolotravel.com/brand/tokens.css
+`tokens.css` is **hand-edited**, directly, in the `axelder/assets` repo —
+there is no generator and nothing to regenerate it from.
+
+```text
+public/brand/tokens.css edited on a branch (axelder/assets repo)
+   → opened as a pull request
+   → CI validates it (scripts/check-tokens.mjs)
+   → merging to main uploads it to assets.cocolotravel.com/brand/tokens.css
+   → the published file is cached for 5 minutes at the edge, so the deploy
+     workflow waits out that cache before it triggers this site's rebuild
    → every app linking the file updates; this site re-renders from it too
 ```
 

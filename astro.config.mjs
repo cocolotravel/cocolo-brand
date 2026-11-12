@@ -26,6 +26,8 @@ export default defineConfig({
             { label: "Colors", link: "/guidelines/colors/" },
             { label: "Typography", link: "/guidelines/typography/" },
             { label: "Spacing", link: "/guidelines/spacing/" },
+            { label: "Layout", link: "/guidelines/layout/" },
+            { label: "Print", link: "/guidelines/print/" },
           ],
         },
         {

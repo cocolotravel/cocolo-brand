@@ -1,0 +1,45 @@
+---
+import { tapTargetMin, rowMinHeight } from "./tokens.js";
+---
+
+<div class="row-demo">
+  <span class="chip">JR</span>
+  <span class="text">Shinkansen Nozomi 23 · voiture 7, sièges 12A–12B</span>
+</div>
+<p class="footnote">
+  Row height <code>var(--row-min-height)</code> = {rowMinHeight.px}px · chip is
+  a tap target, <code>var(--tap-target-min)</code> = {tapTargetMin.px}px
+  minimum.
+</p>
+
+<style>
+  .row-demo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: var(--row-min-height, 3rem);
+    padding: 0 0.75rem;
+    background: var(--color-background-primary, #fffef5);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--tap-target-min, 2.75rem);
+    min-height: var(--tap-target-min, 2.75rem);
+    border-radius: 6px;
+    background: var(--color-brand-sumi, #1b3848);
+    color: var(--color-text-on-dark, #fffef5);
+    font-family: var(--font-style-inter, sans-serif);
+    font-size: var(--doc-meta, 0.875rem);
+    font-weight: 600;
+  }
+  .text {
+    font-family: var(--font-style-inter, sans-serif);
+    font-size: var(--doc-body, 1rem);
+    color: var(--color-text-primary, #1b3848);
+  }
+  .footnote { font-size: 0.8rem; color: var(--sl-color-text-accent); margin-top: 0.6rem; }
+</style>
