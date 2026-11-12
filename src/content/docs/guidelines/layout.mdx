@@ -1,0 +1,53 @@
+---
+title: Layout
+description: Breakpoints, touch targets, and line length for phone, tablet, and desktop.
+---
+
+import LayoutRowExample from '../../../components/LayoutRowExample.astro';
+import { tapTargetMin, rowMinHeight, measureText } from '../../../components/tokens.js';
+
+COCOLO's apps and documentation are built phone-first: the default layout is
+a single column sized for a 360px screen, widening at two breakpoints rather
+than jumping straight to a desktop grid.
+
+## Breakpoints
+
+| Breakpoint | From | Layout |
+|---|---|---|
+| Phone | — (default) | Single column, full-width rows |
+| Tablet | `768px` | Wider columns, side-by-side cards start to appear |
+| Desktop | `1024px` | Full grid — see [Spacing](/guidelines/spacing/) for the desktop frame |
+
+`1024px` is also where the [display](/guidelines/typography/#display-scale-responsive)
+and [document](/guidelines/typography/#document-scale) type scales reach
+their maximum size. These breakpoint widths are a layout convention, not
+published tokens — there is nothing in `tokens.css` to read them from yet.
+
+## Side padding
+
+Keep side padding at **16px or more** on a phone. Combined with the 70-character
+`--measure-text` limit below, a phone's width is what actually constrains
+line length — the character limit only takes over on wider screens.
+
+## Tap targets and row height
+
+| Token | Value | Use |
+|---|---|---|
+| `--tap-target-min` | {tapTargetMin.px}px | Minimum size for any tappable element |
+| `--row-min-height` | {rowMinHeight.px}px | Minimum height for a list row (transports, services, hotels) |
+
+Both values above are read live from the tokens, not typed in.
+
+## Line length
+
+`--measure-text` caps reading text at **{measureText}** (about 70 characters).
+On a phone the screen width limits it first, which in practice gives about 35
+to 45 characters per line — the token is the upper limit, not the typical
+case.
+
+## Example: a row
+
+A row built from the tokens above — a Sumi chip (a tap target) with Washi
+text, at least `--row-min-height` tall:
+
+<LayoutRowExample />

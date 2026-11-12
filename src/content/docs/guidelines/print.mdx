@@ -1,0 +1,32 @@
+---
+title: Print
+description: A4 print rules and the point sizes read from the print tokens.
+---
+
+import PrintScale from '../../../components/PrintScale.astro';
+
+Roadbooks and proposals are sometimes printed, on **A4**. The same named
+document styles switch from screen sizes to point sizes under
+`@media print`, read from the token file's print override block.
+
+## Point sizes
+
+<PrintScale />
+
+## A4 rules
+
+- **White background, no shadows.** Printers don't render shadows or
+  translucent fills reliably — flatten to a solid white page.
+- **Navigation and buttons hidden.** Tab bars, nav chrome, and any
+  interactive-only control have no role on paper.
+- **All accordions open.** Nothing collapsed should stay collapsed —
+  a reader can't tap to expand a printed page.
+- **Cards get a thin border instead of a fill.** Pale background fills can
+  drift grey or pink on some printers; a border reads reliably in black and
+  white.
+- **No page break inside a table or a callout.** Keep each one on a single
+  page so a reader never has to flip to see the rest of a row.
+- **Headings stay with the paragraph that follows.** A heading alone at the
+  bottom of a page is an orphan — keep it with its content.
+- **External link addresses printed in full.** A reader on paper can't tap a
+  link, so the URL itself needs to be visible.

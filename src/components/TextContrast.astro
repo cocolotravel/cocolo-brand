@@ -1,0 +1,60 @@
+---
+import { colors, contrast, grade } from "./tokens.js";
+
+function hex(name) {
+  return colors.find((c) => c.name === name)?.value ?? null;
+}
+
+// Every ratio below is computed at build time from the live token values —
+// nothing here is a typed-in number. Failing pairs are shown, not hidden:
+// several exist on purpose (Kodama and Kin are not text colors).
+const PAIRS = [
+  { label: "Sumi on Washi", note: "body text, the workhorse pairing", fg: "color-text-primary", bg: "color-background-primary" },
+  { label: "Sumi on Millennium Washi", note: "body text on the secondary surface", fg: "color-text-primary", bg: "color-background-secondary" },
+  { label: "Kodama on Washi", note: "Kodama is never a text colour, at any size", fg: "color-brand-kodama", bg: "color-background-primary" },
+  { label: "Kodama on Millennium Washi", note: "Kodama is never a text colour, at any size", fg: "color-brand-kodama", bg: "color-background-secondary" },
+  { label: "Sumi on Kodama", note: "Kodama is never a fill behind text", fg: "color-text-primary", bg: "color-brand-kodama" },
+  { label: "Washi on Kodama", note: "Kodama is never a fill behind text", fg: "color-brand-washi", bg: "color-brand-kodama" },
+  { label: "Washi on Sumi", note: "filled chips and rows: Sumi background, Washi text", fg: "color-text-on-dark", bg: "color-background-dark-mode" },
+  { label: "Kin on Washi", note: "Kin is a gleam, never a text colour", fg: "color-brand-kin", bg: "color-background-primary" },
+  { label: "Alert text on alert background", note: "callout body/title text", fg: "color-status-alert-text", bg: "color-status-alert-bg" },
+  { label: "Alert base on Washi", note: "icons and bars only — not held to the text minimum", fg: "color-status-alert", bg: "color-background-primary" },
+  { label: "Confirmation text on confirmation background", note: "callout body/title text", fg: "color-status-success-text", bg: "color-status-success-bg" },
+  { label: "Confirmation base on Washi", note: "icons and bars only — not held to the text minimum", fg: "color-status-success", bg: "color-background-primary" },
+  { label: "Advice/memo on advice background", note: "callout body/title text", fg: "color-status-info", bg: "color-status-info-bg" },
+];
+
+const rows = PAIRS.map((p) => {
+  const fgHex = hex(p.fg);
+  const bgHex = hex(p.bg);
+  const ratio = fgHex && bgHex ? contrast(fgHex, bgHex) : null;
+  return { ...p, fgHex, bgHex, ratio, grade: grade(ratio) };
+});
+---
+
+<table class="specs">
+  <thead>
+    <tr><th>Pair</th><th>Note</th><th>Ratio</th><th>Grade</th></tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr class={r.grade.pass === false ? "fail" : ""}>
+        <td>
+          <span class="chip" style={`background:${r.bgHex}; color:${r.fgHex};`}>Aa</span>
+          {r.label}
+        </td>
+        <td>{r.note}</td>
+        <td>{r.ratio ? `${r.ratio.toFixed(2)}:1` : "—"}</td>
+        <td><strong>{r.grade.label}</strong></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
+  .specs th, .specs td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); vertical-align: middle; }
+  .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
+  .specs tr.fail td:last-child strong { color: var(--color-status-alert-text, #a9512b); }
+  .chip { display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; height: 1.9rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; margin-right: 0.5rem; border: 1px solid var(--sl-color-gray-5); }
+</style>
