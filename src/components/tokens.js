@@ -227,18 +227,17 @@ export const displayScale = DISPLAY_KEYS.map((name) => {
 });
 
 // ---- Document scale (roadbooks, proposals, apps, print) ---------------------
-// Per-style metadata (used-for description, typeface, weight) is authored
-// spec from the brand source text — tokens.css has no per-style font/weight
-// variable to read it from. Sizes and line heights ARE read from tokens.
-// `weightToken` resolves to the live --font-weights-* value; `weight` is a
-// literal used only where no matching weight token exists yet (flagged below).
+// Per-style metadata (used-for description, typeface) is authored spec from
+// the brand source text — tokens.css has no per-style font-family variable to
+// read it from. Sizes, line heights, and weight ARE read from tokens via
+// `weightToken`, which resolves to the live --font-weights-* value.
 const DOC_STYLE_META = [
   { key: "title", token: "doc-title", usedFor: "Trip name, page title", font: "Roslindale", weightToken: "bold" },
   { key: "section", token: "doc-section", usedFor: "Card and tab headings", font: "Roslindale", weightToken: "bold" },
   { key: "day", token: "doc-day", usedFor: "Day header", font: "Roslindale", weightToken: "bold" },
   { key: "item", token: "doc-item", usedFor: "Hotel, transport and service names; Markdown ###", font: "Roslindale", weightToken: "semibold" },
   { key: "body", token: "doc-body", usedFor: "Reading text, descriptions", font: "Inter", weightToken: "regular" },
-  { key: "meta", token: "doc-meta", usedFor: "Dates, times, secondary lines, chip text", font: "Inter", weight: 500, weightNote: "no --font-weights-* token for 500 yet" },
+  { key: "meta", token: "doc-meta", usedFor: "Dates, times, secondary lines, chip text", font: "Inter", weightToken: "medium" },
   { key: "caption", token: "doc-caption", usedFor: "Legal text, small badges", font: "Inter", weightToken: "regular" },
   { key: "navlabel", token: "doc-navlabel", usedFor: "Tab-bar labels only", font: "Inter", weightToken: "semibold" },
 ];

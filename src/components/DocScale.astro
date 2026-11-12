@@ -55,19 +55,12 @@ function weightStyle(s) {
         <td><code>var({s.cssVar})</code></td>
         <td>{s.px360}px</td>
         <td>{s.px1024}px</td>
-        <td>
-          {s.font} {s.weight}
-          {s.weightNote && <sup title={s.weightNote}>*</sup>}
-        </td>
-        <td>
-          {s.lineHeight ?? "—"}
-          {!s.lhVar && <sup title="No --doc-lh-navlabel token published yet">*</sup>}
-        </td>
+        <td>{s.font} {s.weight}</td>
+        <td>{s.lineHeight ?? "—"}</td>
       </tr>
     ))}
   </tbody>
 </table>
-<p class="footnote">* not backed by a published token yet — see the note above the table.</p>
 
 <style>
   .scale { margin: 1rem 0 1.5rem; }
@@ -79,5 +72,4 @@ function weightStyle(s) {
   .specs { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
   .specs th, .specs td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--sl-color-gray-6); vertical-align: top; }
   .specs th { font-size: 0.75rem; color: var(--sl-color-text-accent); font-weight: 600; }
-  .footnote { font-size: 0.75rem; color: var(--sl-color-text-accent); margin-top: 0.4rem; }
 </style>
