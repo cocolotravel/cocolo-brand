@@ -98,3 +98,27 @@ tokens.css has no per-style font-family variable to read them from.
   which breaks accessibility zoom).
 - **Print (A4).** The same styles switch to points — see
   [Print](/guidelines/print/) for the table.
+
+## Heading outline
+
+In a roadbook (or any `doc.css` page), the HTML tag carries the document
+outline a screen reader or a browser's table-of-contents relies on; the
+class carries the visual style. Keep the two matched:
+
+| Content | Tag | Class |
+|---|---|---|
+| Roadbook title (home tab only) | `h1` | `t-title` |
+| Tab title | `h2` | `t-title` |
+| Section inside a tab (not home) | `h3` | `t-section` |
+| Card title (hotel/transport/service) | `h3` | `.cardband__title` / `t-item` |
+| Day title (Itinéraire tab only) | `h3` | `t-day` |
+| Heading inside roadbook text or a note | `h4` | demoted one level, so content can never outrank page structure |
+| Small secondary line | `p` | `t-meta` |
+
+The home tab is the one exception: its section headers (Participants,
+Itinéraire recap, Logements/Transports/Services lists, Documentation,
+Contact d'urgence) stay `h2.t-section`, unlike a section inside any other
+tab, which is demoted to `h3`.
+
+A whole-row button — a home-tab recap row, an in-day recap row — is a
+`<span>`, never a heading: a heading can't live inside a `<button>`.

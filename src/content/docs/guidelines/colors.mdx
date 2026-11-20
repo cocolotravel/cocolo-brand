@@ -31,8 +31,11 @@ using the semantic token follows automatically.
   light backgrounds.
 - **Kodama supports.** Dividers, quiet accents, secondary states. Never a
   shout.
-- **Kin is a gleam, never a background.** A rule, a small mark, a single
-  moment on a page. If a layout feels busy, the fix is less Kin, not more.
+- **Kin marks where to look first.** It's allowed as a fill behind Sumi text
+  (8:1) — a bar, a tag, the active tab, the main action — but never behind
+  Washi text (1.5:1) and never a page background, and it always comes with
+  text or an icon rather than standing alone. Once or twice per screen. If a
+  layout feels busy, the fix is less Kin, not more.
 - **Contrast.** Sumi on Washi is the workhorse pairing and clears WCAG AA
   comfortably. Kodama and Kin on light backgrounds do **not** clear 4.5:1 —
   never set body text in them. Kodama is never a text colour at any size
@@ -42,15 +45,65 @@ using the semantic token follows automatically.
   follow the callout rules: the base colours for bars and icons, the `-text`
   tokens for text. Aim for AA (4.5:1) on all body copy, 3:1 on large display
   type.
+- **Borders and weight, in documents.** A card's border is 1px — never a
+  shadow. The circled-chevron interaction ring (see
+  [Layout](/guidelines/layout/#interaction-glyphs)) is 20px across with a 1px
+  stroke, and is decoration only: the whole row is the tap target, not the
+  ring. Semibold weight is reserved for item names (a hotel, a transport, a
+  service) and strip titles — a plain label like a date or a row caption
+  stays regular weight even sitting next to one.
 - Do not invent tints, shades, or opacities. If a value is needed that
   doesn't exist, it goes into `tokens.css` first — see
   [Using the tokens](/guidelines/tokens/).
+
+## Document colour roles
+
+Roadbooks, proposals, and anything else built on `doc.css` add a third layer
+on top of the five canonical colours: **category colours**, fixed regardless
+of branding, and a **note token** for booking notes.
+
+### Category colours
+
+Three categories — lodging, transports, services — each with one fixed fill
+and one pale tint. They never change for a partner: a partner can recolour
+the header, the buttons, and the main Kin action, but never a category band.
+
+| Category | Fill (Washi text) | Pale tint (Sumi text) |
+|---|---|---|
+| Lodging | Sumi `#1b3848` — 12.2:1 | `#e5eff5` — 10.5:1 |
+| Transports | Deep Kodama `#67765f` — 4.8:1 | `#edefeb` — 10.6:1 |
+| Services | Deep gold `#8b6b00` — 4.9:1 | `#f5f1e5` — 10.9:1 |
+
+A category is always colour, icon, and label together — never colour alone,
+since print and colour-blind readers depend on the icon and the label.
+
+### Note text
+
+Booking notes (a card's `card__note`) use `--color-text-note`
+(`#6e5400`, a deep gold) on the card's cream body — never on a coloured
+band. It's the one token worth re-checking against a new partner palette,
+since three of its four pairings are fixed and one isn't:
+
+| Background | Ratio |
+|---|---|
+| Washi (default) | 7.08:1 |
+| Millennium Washi | 6.49:1 |
+| Services category's pale tint | 6.34:1 |
+| A partner's pale background (e.g. `#f6ece4`) | 6.15:1 |
 
 ## Text contrast
 
 Every ratio below is computed at build time from the live token values — not
 typed in. Failing pairs are shown, not hidden: several are failures on
 purpose, to make the rule above concrete.
+
+A browser doesn't report a `color-mix()` result (used for every tinted
+border and hover wash on this site) as a hex string — it reports a
+`color(srgb ...)` function. The only reliable way to measure contrast
+against one is to let the browser actually composite the pixel (a canvas
+works) and read back the rendered colour, then apply the standard WCAG
+relative-luminance formula to that — not to the literal percentages in the
+CSS.
 
 <TextContrast />
 
