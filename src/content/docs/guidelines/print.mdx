@@ -13,20 +13,47 @@ document styles switch from screen sizes to point sizes under
 
 <PrintScale />
 
-## A4 rules
+## A plain document, not the app
 
-- **White background, no shadows.** Printers don't render shadows or
-  translucent fills reliably — flatten to a solid white page.
-- **Navigation and buttons hidden.** Tab bars, nav chrome, and any
-  interactive-only control have no role on paper.
-- **All accordions open.** Nothing collapsed should stay collapsed —
-  a reader can't tap to expand a printed page.
-- **Cards get a thin border instead of a fill.** Pale background fills can
-  drift grey or pink on some printers; a border reads reliably in black and
-  white.
-- **No page break inside a table or a callout.** Keep each one on a single
-  page so a reader never has to flip to see the rest of a row.
-- **Headings stay with the paragraph that follows.** A heading alone at the
-  bottom of a page is an orphan — keep it with its content.
-- **External link addresses printed in full.** A reader on paper can't tap a
-  link, so the URL itself needs to be visible.
+A printed roadbook is a **plain document for A4 paper** — not a reduced
+copy of the interactive page. No boxes, no fills, no tints: hairline rules
+and type carry the whole hierarchy, on a white or transparent background
+throughout.
+
+- **Page.** A4, margins 18mm top and bottom, 15mm left and right (set in
+  `doc.css`'s `@page` rule — not a literal uniform 15mm). Body text 11pt,
+  one column.
+- **Type.** Inter and Roslindale, the same families as on screen.
+- **No shadows anywhere**, and a card's fill becomes a single hairline rule
+  rather than a border box — a pale fill can drift grey or pink on some
+  printers, where a plain rule reads reliably in black and white.
+
+### What doesn't print
+
+Because paper can't click or hover: the map, the FAQ blocks, the
+Documentation block, action buttons, link-only lines (a database link with
+no sentence around it), chevrons, rings, arrows, hotel photos, the
+home-tab recap lists, the header bar, the bottom tab bar, the days panel,
+modals, "Fin de l'aperçu" end-of-preview markers, and a URL printed after a
+link's own text.
+
+### What does
+
+The cover, travellers, the itinerary list, the days, hotels, transports,
+services. The emergency numbers print as one plain line on the cover
+("Urgences : Police 110 · Ambulance 119") rather than a button or a
+coloured bar. "Voucher" prints as plain text, never a tag or a pill.
+
+### Pagination
+
+Each of the five parts — cover, itinerary, hotels, transports, services —
+starts on a new page. A heading never ends a page alone: it stays paired
+with the block that follows it across the page break.
+
+:::caution[Test print rules in a real browser]
+An invalid CSS selector doesn't warn — it silently drops the entire rule.
+That's how a solid-navy card and a blank tab went unnoticed for weeks on
+the live roadbook. Several orphan-heading and blank-element bugs also only
+showed up on a real Chrome print and never reproduced in a headless one —
+treat a headless print check as a first pass, not the final one.
+:::

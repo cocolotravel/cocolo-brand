@@ -51,3 +51,72 @@ A row built from the tokens above — a Sumi chip (a tap target) with Washi
 text, at least `--row-min-height` tall:
 
 <LayoutRowExample />
+
+## Card anatomy
+
+A detail card (hotel, transport, service) is a coloured band over a cream
+body: `.card.card--band` holds a `.cardband` — one of `--lodging`,
+`--transport`, `--service` — followed by `.card__body`.
+
+The band is three stacked lines, always in this order:
+
+| Card | Meta line | Title line | Key line |
+|---|---|---|---|
+| Hotel | pin icon + location | hotel name | calendar icon + check-in → check-out |
+| Transport | train icon + "Opéré par X" | route | times · Inclus / Non inclus |
+| Service | calendar icon + date(s) | service name | units + Voucher tag when applicable |
+
+Band colours are the fixed category colours (see
+[Colors](/guidelines/colors/#category-colours)) and never change for a
+partner. Meta and key lines stay full opacity and regular weight at
+`--doc-meta` — Washi text is only 4.8:1 on the transport fill and 4.9:1 on
+the service fill, so fading or thinning it drops under AA. The title is
+Roslindale semibold at `--doc-item`, not bold sans-serif. A booking note
+renders in `.card__note` (`--color-text-note`) on the cream body, never on
+the band.
+
+## Day header
+
+A vertical stack, top to bottom: the day tag, the title, the date. The tag
+(`.daytag`, "Jour NN") is content-sized and left-aligned — it never
+stretches full width, even though the title line below it does.
+
+Day cards are always open: there's no accordion and no chevron to collapse
+a day. Day numbers are always two digits wherever a person reads them
+("Jour 01", not "Jour 1") — the one exception is the map pins, which use the
+short form "J01" because it fits their small format cleanly. "Nuit 1/3"
+counts nights, not days, and is never zero-padded.
+
+## Interaction glyphs
+
+Four glyphs, each with exactly one meaning — never swap one for another,
+and the ring around a chevron is decoration only (20px, 1px stroke): the
+whole row is the tap target, at least 44px.
+
+| Glyph | Meaning | Example |
+|---|---|---|
+| **+** | Opens something on top of the page | Info panel, photo gallery, the days panel, a multi-voucher list |
+| **‹** | Goes back to a place already in the roadbook | "Jour N" buttons on a detail card |
+| **⌄ / ⌃** | Opens in place, no navigation | An activity's expandable row |
+| **↗** | Leaves the page, a new tab | External links; a single voucher link is always `↗` |
+
+"Jour par Jour", the line under each tab title, is a real button carrying a
+trailing "+" — not plain text — opening the days panel.
+
+## Header and partner branding
+
+The header is the cloud logo plus a wordmark in the display font.
+
+**No branding passed** (the common case): the wordmark reads "Cocolo
+Travel," and the logo links to `cocolotravel.com`.
+
+**Partner branding** is any branding field that differs from its own
+default — name, website, logo, or any of the five canonical colours as sent
+for that partner. Once any one field differs, the wordmark becomes the
+partner's name (an empty name means no wordmark element at all, not a blank
+space) and the logo links to the partner's website (no website means a bare
+image, no link).
+
+Partners can change their colours, logo, name, and website. They do **not**
+get their own fonts — Roslindale and Inter stay fixed — and the category
+colours never change for any partner.
